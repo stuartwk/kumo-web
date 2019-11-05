@@ -1,0 +1,19 @@
+<div id="users-area">
+
+  <button (click)="user_list_displayed = !user_list_displayed">
+    <p>{{users.length}}
+    <span *ngIf="users.length === 1">user is </span>
+    <span *ngIf="(users.length === 0) || (users.length > 1)">users are </span>
+    in this room.</p>
+    <span class="down-indicator">▾</span>
+  </button>
+
+  <ul id="users-list" [hidden]="!user_list_displayed">
+    <li *ngFor="let user of users; let i = index">
+      <span *ngIf="i > 0">-</span>
+      <span *ngIf="i === 0">👉</span>
+      {{user.username}}
+    </li>
+  </ul>
+
+</div>

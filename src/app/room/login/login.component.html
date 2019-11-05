@@ -1,0 +1,39 @@
+<app-sub-header>
+  <p>
+    Choose a username for this room.
+    <br />
+    Enter the chat room password.
+    <br />
+    Messages are <u><i>never</i></u> saved to a database.
+    <br />
+    When you leave the chat, the messages will be erased.
+  </p>
+</app-sub-header>
+
+<div class="container">
+
+  <div class="floating-form-container">
+
+    <form *ngIf="!loading" [formGroup]="login_room_form" (ngSubmit)="onSubmit()" class="floating-form">
+
+      <h1>Room Login</h1>
+
+      <div class="form-field">
+        <label for="user_name">Choose a Username:</label>
+        <input id="user_name" type="text" formControlName="user_name" autocomplete="off">
+      </div>
+
+      <div class="form-field">
+        <label for="password">Chat Room Password:</label>
+        <input id="password" type="password" formControlName="password" autocomplete="off">
+      </div>
+
+      <br />
+
+      <button type="submit">Join Room</button>
+
+    </form>
+
+  </div>
+
+</div>

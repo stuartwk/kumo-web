@@ -1,0 +1,66 @@
+header {
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+  padding: 7px 15px;
+  height: 68px;
+  z-index: 1;
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+  }
+
+  a {
+    color: #000;
+  }
+
+  #logo {
+    width: 30px;
+    margin-right: 15px;
+  }
+
+  table {
+    display: none;
+  }
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+  header {
+    display: flex;
+    flex-flow: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 220px;
+    height: 100vh;
+    border-right: 1px gainsboro dashed;
+
+    h1 {
+
+      a {
+        border-bottom: 1px dashed gainsboro;
+        padding: 0 0 15px;
+      }
+    }
+
+    table {
+      display: block;
+    }
+
+    #site-name {
+      text-decoration: underline;
+    }
+  }
+
+}

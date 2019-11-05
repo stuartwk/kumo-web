@@ -1,1 +1,129 @@
 /* You can add global styles to this file, and also import other style files */
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: monospace;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0px;
+}
+
+// remove autofill
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+.floating-form-container {
+  display: flex;
+  justify-content: stretch;
+
+  .floating-form {
+    background-color: #fff;
+    padding: 30px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    font-size: 1.4rem;
+
+    h1 {
+      font-size: 1.6rem;
+      margin: 0;
+      border-bottom: 1px dashed #000;
+      padding-bottom: 6px;
+      margin-bottom: 15px;
+    }
+
+    input{
+      border: 1px solid #999;
+      border-radius: 3px;;
+
+      &:focus {
+        border-style: dashed;
+        outline: none;
+      }
+    }
+
+    button[type=submit] {
+      font-family: monospace;
+      border: 1px solid tomato;
+      border-radius: 3px;
+      background-color: tomato;
+      color: #fff;
+      box-shadow: 1px 1px 1px rgba(0, 0,0, 0.3);
+      cursor: pointer;
+      font-size: 1.6rem;
+      padding: 7px;
+
+      &:focus {
+        outline: none;
+        border: 1px dashed #000;
+        outline: none;
+      }
+
+      &:disabled {
+        background:#999;
+        border: 1px solid #999;
+      }
+    }
+
+  }
+
+}
+
+.form-field {
+  display: flex;
+  flex-flow: column;
+  margin-bottom: 15px;
+
+  input {
+    padding: 7px;
+    font-size: 1.6rem;
+    font-family: monospace;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+  .floating-form-container {
+    height: auto;
+    min-height: 100vh;
+    align-items: center;
+    padding-top: 0px;
+    justify-content: center;
+
+    .floating-form {
+      width: auto;
+      height: auto;
+      border-radius: 5px;
+      border: 1px dashed gainsboro;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+    }
+  }
+
+  .container {
+    background-image: url('/assets/images/pattern_09.jpg');
+    background-repeat: repeat;
+    background-size: 800px;
+    float: right;
+    width: calc(100vw - 220px);
+    height: 100vh;
+  }
+
+}

@@ -1,0 +1,44 @@
+<div #heightMe>
+
+  <app-sub-header>
+      <p>
+        Welcome to
+        <br />
+        👉<b *ngIf="!room">...</b> <button (click)="copyLink()" title="copy link to chat room" class="copy-btn"><b *ngIf="room"> {{room.name}} </b></button>👈
+        <br />
+        Copy the link to share with friends.
+        <br />
+        Your messages are anonymous and <u><i>never</i></u> saved to a database. They are only shown to active users.
+        <br />
+      </p>
+      <div id="copy-success-container" [ngClass]="{'hidden': !display_link_copied_message}">
+        <p>Room link copied</p>
+      </div>
+    </app-sub-header>
+
+    <app-user-list [users]="users"></app-user-list>
+
+</div>
+
+<div class="container">
+
+  <div id="thread-container" #scrollMe>
+
+    <div id="thread">
+      <div *ngFor="let message of messages" class="message">
+        <span class="sent-by">{{message.user.username}}</span>
+        <span class="sent-at">{{message.sent_at | date:'shortTime'}}</span>
+        <br />
+        <p class="message-content">{{message.content}}</p>
+      </div>
+    </div>
+
+    <div id="send-message-container">
+      <textarea autoGrow type="text" [formControl]="message_to_send" rows="1" (keydown.enter)="sendMessage($event)" [disabled]="sending_message"></textarea>
+      <button (click)="sendMessage($event)">Send</button>
+    </div>
+
+  </div>
+
+</div>
+

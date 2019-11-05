@@ -1,0 +1,38 @@
+<app-sub-header>
+  <p>
+    Sharable chat rooms cost 10000 sats.
+    <br />
+    Use a bitcoin lightning network wallet to pay.
+    <br />
+    No messages are ever saved to any database. The room self-destructs in 24 hours.
+    <br />
+    After payment, you'll be automatically routed to your generated room.
+  </p>
+</app-sub-header>
+
+<div class="container">
+  <div *ngIf="invoice" class="floating-form-container">
+
+    <div id="invoice" class="floating-form">
+
+      <div id="qr-container" [ngClass]="{'qr-copying' : qr_copying}">
+        <qrcode
+          *ngIf="invoice.uri"
+          [qrdata]="invoice.uri"
+          [usesvg]="true"
+          [level]="'M'"
+          (click)="copyInvoice()">
+        </qrcode>
+        <div id="copy-successful-container" [ngClass]="{'hidden' : !display_copy_success}">
+          <div id="copy-successful">
+            ✔ invoice copied
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

@@ -1,0 +1,41 @@
+
+<app-sub-header>
+  <p>Share 🕶️ anonymous, 💣 self-destructing, ₿ bitcoin ⚡ lightning network chat rooms with friends.
+    <br />
+    Your messages are <u><i>never</i></u> saved to a database.
+  </p>
+</app-sub-header>
+
+<div class="container">
+  <div class="floating-form-container">
+
+    <form [formGroup]="setup_room_form" (ngSubmit)="onSubmit()" class="floating-form">
+
+      <h1>Create an 🕶️ Anonymous Chat Room</h1>
+
+      <div class="form-field">
+        <label for="room_name">Room Name:</label>
+        <input id="room_name" type="text" formControlName="room_name" autocomplete="off">
+      </div>
+
+      <div class="form-field">
+        <label for="room_password">Choose a Password:</label>
+        <input id="room_password" type="password" formControlName="room_password">
+      </div>
+
+      <div class="form-field">
+        <label for="room_password_confirm">Confirm Password:</label>
+        <input id="room_password_confirm" type="password" formControlName="room_password_confirm">
+      </div>
+
+      <br />
+
+      <button type="submit" [disabled]="loading">
+        <span *ngIf="!loading">Go 👉</span>
+        <span *ngIf="loading">...</span>
+      </button>
+
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,49 @@
+#qr-container {
+  position: relative;
+  width: 100%;
+
+  i {
+    position: absolute;
+    bottom: -26px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  &.qr-copying {
+    padding: 15px;
+    background-color: gainsboro;
+  }
+
+  #copy-successful-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    #copy-successful {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+}
+
+#charge {
+  padding: 45px;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+}
