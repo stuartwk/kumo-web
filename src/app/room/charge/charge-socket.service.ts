@@ -28,19 +28,21 @@ export class ChargeSocketService {
 
   connect(charge_id: string) {
 
-    this.socket = io(`${this.url}?charge_id=${charge_id}`);
+    if (!this.socket || !this.socket.connected) {
+      this.socket = io(`${this.url}?charge_id=${charge_id}`);
 
-    this.socket.on('connect', () => {
-      console.log('connected');
-    });
+      this.socket.on('connect', () => {
+        console.log('connected');
+      });
 
-    this.socket.on('paymentReceived', (res: PaymentCompleteRO) => {
-      this.charge_stream_source.next(res);
-    });
+      this.socket.on('paymentReceived', (res: PaymentCompleteRO) => {
+        this.charge_stream_source.next(res);
+      });
 
-    this.socket.on('disconnect', () => {
-      console.log('disconnected');
-    });
+      this.socket.on('disconnect', () => {
+        console.log('charge socket disconnected');
+      });
+    }
 
   }
 
@@ -49,7 +51,9 @@ export class ChargeSocketService {
   }
 
   disconnect() {
-    this.socket.disconnect();
+    if (this.socket) {
+      this.socket.disconnect();
+    }
   }
 
 }

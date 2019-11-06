@@ -140,7 +140,8 @@ export class ChargeComponent implements OnInit, OnDestroy {
       sub.unsubscribe();
     }
 
-    this.chargeSocketService.leaveRoom(this.invoice.id);
+    // this.chargeSocketService.leaveRoom(this.invoice.id);
+    this.chargeSocketService.disconnect();
   }
 
 }
