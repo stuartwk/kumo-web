@@ -4,6 +4,9 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SubHeaderModule } from '../_modules/sub-header/sub-header.module';
 
+/** MODULES */
+import { SocialModule } from '../_modules/social/social.module';
+
 /** COMPONENTS */
 import { SetupComponent } from './setup.component';
 
@@ -16,6 +19,7 @@ import { SetupComponent } from './setup.component';
     CommonModule,
     ReactiveFormsModule,
     SubHeaderModule,
+    SocialModule,
     RouterModule.forChild([
       {
         path: '',
