@@ -81,6 +81,7 @@
       font-size: 1.6rem;
       font-weight: 500;
       font-family: monospace;
+      padding-right: 30px;
 
       &:focus {
         outline: none;
@@ -103,6 +104,13 @@
     }
   }
 
+}
+
+#emoji-picker {
+  position: absolute;
+  font-size: 1.8rem;
+  right: 85px;
+  cursor: pointer;
 }
 
 // Small devices (landscape phones, 576px and up)

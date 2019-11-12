@@ -35,6 +35,7 @@ export class ThreadComponent implements OnInit, OnDestroy, AfterViewInit {
   user_list_displayed: boolean;
   display_link_copied_message: boolean;
   offset: number;
+  emoji_box_open: boolean;
 
   constructor(
     private router: Router,
@@ -49,6 +50,7 @@ export class ThreadComponent implements OnInit, OnDestroy, AfterViewInit {
     this.sending_message = false;
     this.user_list_displayed = false;
     this.display_link_copied_message = false;
+    this.emoji_box_open = false;
 
     const connected_users$ = this.roomSocketService.users$.subscribe( (data) => {
 
@@ -123,6 +125,11 @@ export class ThreadComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.subs.push(route_sub);
 
+  }
+
+  handleEmojiSelect($e) {
+    const message = this.message_to_send.value;
+    this.message_to_send.setValue(message + $e.char);
   }
 
   getRoom() {

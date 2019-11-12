@@ -36,6 +36,12 @@
     <div id="send-message-container">
       <textarea autoGrow type="text" [formControl]="message_to_send" rows="1" (keydown.enter)="sendMessage($event)" [disabled]="sending_message"></textarea>
       <button (click)="sendMessage($event)">Send</button>
+      <div
+        (click)="emoji_box_open = !emoji_box_open"
+        id="emoji-picker"
+        [(emojiPickerIf)]="emoji_box_open"
+        [emojiPickerDirection]="'top'"
+        (emojiPickerSelect)="handleEmojiSelect($event)">😄</div>
     </div>
 
   </div>

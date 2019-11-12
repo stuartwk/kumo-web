@@ -28,6 +28,7 @@
         <input id="password" type="password" formControlName="password" autocomplete="off">
       </div>
 
+      <p class="err-message" *ngIf="err_message">{{err_message}}</p>
       <br />
 
       <button type="submit">Join Room</button>

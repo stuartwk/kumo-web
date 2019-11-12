@@ -98,6 +98,11 @@ input::-webkit-credentials-auto-fill-button {
   }
 }
 
+.err-message {
+  color: tomato;
+  font-style: italic;
+}
+
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
 

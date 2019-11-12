@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   login_room_form: FormGroup;
   is_private: boolean;
   loading: boolean;
+  err_message: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private roomService: RoomService, private fb: FormBuilder) {
     this.loading = true;
@@ -66,15 +67,26 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     const login_form = this.login_room_form.value;
 
+    if (login_form.user_name.length < 1) {
+      this.err_message = 'Please enter a username';
+      this.loading = false;
+      return;
+    }
+
     const setupDTO = {
       username: login_form.user_name,
       password: login_form.password
     };
 
     this.roomService.loginToRoom(this.room_id, setupDTO).subscribe(
-      (_) => this.router.navigate(['/', this.room_id]),
-      (err) => console.error('error logging into room: ', err),
-      () => this.loading = false
+      (_) => {
+        this.router.navigate(['/', this.room_id]);
+      },
+      (err) => {
+        console.error('error logging into room: ', err);
+        this.err_message = err.error.message;
+        this.loading = false;
+      },
     );
   }
 

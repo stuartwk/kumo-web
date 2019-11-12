@@ -8,6 +8,7 @@ import { ChargeComponent } from './charge/charge.component';
 import { LoginComponent } from './login/login.component';
 import { RoomComponent } from './room.component';
 import { ThreadComponent } from './thread/thread.component';
+import { UserListComponent } from './thread/user-list/user-list.component';
 
 /** DIRECTIVES */
 import { AutoGrowDirective } from '../_directives/auto-grow.directive';
@@ -20,7 +21,7 @@ import { SubHeaderModule } from '../_modules/sub-header/sub-header.module';
 
 /** EXTERNAL */
 import { QRCodeModule } from 'angularx-qrcode';
-import { UserListComponent } from './thread/user-list/user-list.component';
+import {  NgxEmojiPickerModule  } from 'ngx-emoji-picker';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { UserListComponent } from './thread/user-list/user-list.component';
     ReactiveFormsModule,
     QRCodeModule,
     SubHeaderModule,
+    NgxEmojiPickerModule,
     RouterModule.forChild([
       {
         path: '',
