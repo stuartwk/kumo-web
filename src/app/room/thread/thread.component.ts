@@ -36,6 +36,7 @@ export class ThreadComponent implements OnInit, OnDestroy, AfterViewInit {
   display_link_copied_message: boolean;
   offset: number;
   emoji_box_open: boolean;
+  room_expiration: Date;
 
   constructor(
     private router: Router,
@@ -139,6 +140,11 @@ export class ThreadComponent implements OnInit, OnDestroy, AfterViewInit {
         this.room = roomDto.room;
         this.user = this.localStorageService.getRoomUser(this.room.id);
 
+        const _createdAt = new Date(this.room.createdAt);
+        this.room_expiration = new Date(_createdAt.setDate(_createdAt.getDate() + 1));
+
+        this.runTimer();
+
         if (this.user) {
           this.roomSocketService.connect(this.room.id);
         } else {
@@ -186,6 +192,22 @@ export class ThreadComponent implements OnInit, OnDestroy, AfterViewInit {
       this.roomSocketService.sendMessage({message_content: content, room_id: this.room_id});
       this.message_to_send.patchValue('');
     }
+
+  }
+
+  runTimer() {
+
+    setInterval(() => {
+
+      const now = new Date();
+
+      if (now.getTime() > this.room_expiration.getTime()) {
+
+        this.router.navigate(['/']);
+
+      }
+
+    }, 60000);
 
   }
 
